@@ -1,0 +1,11 @@
+#!/bin/bash
+
+TAG=latest
+
+if [ "$1" ]; then
+  docker push hasansino/$1:$TAG
+  exit 0
+fi
+
+echo "No image name provided, aborting..."
+exit 1

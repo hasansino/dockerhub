@@ -1,0 +1,11 @@
+#!/bin/bash
+
+TAG=latest
+
+if [ "$1" ]; then
+  docker build --no-cache -t hasansino/$1:$TAG ./$1
+  exit 0
+fi
+
+echo "No image name provided, aborting..."
+exit 1
