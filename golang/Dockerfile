@@ -1,4 +1,4 @@
-FROM golang:1.14.9-stretch
+FROM golang:latest
 
 ENV CGO_ENABLED 0
 ENV GO111MODULE auto
