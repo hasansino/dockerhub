@@ -2,6 +2,9 @@
 
 set -e
 
+GC_FLAGS=${GC_FLAGS:-'all=-N -l'}
+echo GC_FLAGS=$GC_FLAGS
+
 # start delve debug server
 if [ "$1" = 'debug' ]; then
     if [ ! -f main.go ]; then
@@ -9,7 +12,8 @@ if [ "$1" = 'debug' ]; then
         exit 1
     fi
     echo >&2 "Starting project with delve debugger."
-    exec dlv debug --listen=:40000 --headless=true --api-version=2 --accept-multiclient -- ${@:1}
+    echo >&2 "Running with args: ${@:2}"
+    exec dlv debug --listen=:40000 --headless=true --api-version=2 -- ${@:2}
 fi
 
 # build app using cache and then execute
@@ -19,7 +23,7 @@ if [ "$1" = 'build' ]; then
         exit 1
     fi
     echo >&2 "Building go project using cache."
-    go build -gcflags "all=-N -l" -i -o /app main.go
+    go build -gcflags="$GC_FLAGS" -o /app main.go
     echo >&2 "Running with args: ${@:2}"
     cd / && exec /app ${@:2}
 fi
