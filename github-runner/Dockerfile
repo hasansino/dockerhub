@@ -1,0 +1,32 @@
+FROM ubuntu:20.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update && apt-get install -y \
+    curl tar git jq \
+    cppcheck \
+    && apt-get clean
+
+RUN useradd -m github-runner
+
+RUN mkdir /actions-runner
+
+WORKDIR /actions-runner
+
+RUN curl -o actions-runner-linux-x64-2.319.1.tar.gz -L https://github.com/actions/runner/releases/download/v2.319.1/actions-runner-linux-x64-2.319.1.tar.gz
+
+RUN tar -xzf actions-runner-linux-x64-2.319.1.tar.gz
+
+RUN chown -R github-runner:github-runner /actions-runner
+
+ENV RUNNER_URL=""
+ENV RUNNER_TOKEN=""
+
+RUN ./bin/installdependencies.sh
+
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+USER github-runner
+
+ENTRYPOINT ["/entrypoint.sh"]
