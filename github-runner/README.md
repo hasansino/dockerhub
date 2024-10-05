@@ -1,5 +1,7 @@
 # GitHub actions runner
 
+GitHub actions runner in cointainer. Version linux-x64-2.319.1.
+
 ## Environment:                       
 
   * RUNNER_URL [string]

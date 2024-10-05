@@ -1,11 +1,12 @@
 FROM golang:latest
 
-ENV CGO_ENABLED 0
-ENV GO111MODULE auto
-ENV GOPROXY direct
-ENV GOSUMDB off
+RUN go version
 
-RUN go get github.com/derekparker/delve/cmd/dlv
+ENV CGO_ENABLED=0
+ENV GOPROXY=direct
+ENV GOSUMDB=off
+
+RUN go install github.com/go-delve/delve/cmd/dlv@latest
 
 COPY entrypoint.sh /
 ENTRYPOINT ["/entrypoint.sh"]
