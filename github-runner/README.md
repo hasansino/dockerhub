@@ -6,9 +6,10 @@
   * RUNNER_TOKEN [string]
   * ACTIONS_RUNNER_DEBUG [bool]
   * ACTIONS_STEP_DEBUG [bool]
-## docker-compose example
 
-```json
+## Example with docker-compose
+
+```yaml
   github-runner:
     image: hasansino/github-runner:latest
     environment:
