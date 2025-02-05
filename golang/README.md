@@ -9,20 +9,23 @@ using delve package on port 40000.
 ## Running from terminal
 ```bash
 docker run --rm -it \
--v "${GOPATH}/src/github.com/hasansino/apptemplate:/go/src/github.com/hasansino/apptemplate" \
--w /go/src/github.com/hasansino/apptemplate \
-hasansino/golang:latest build
+-v "${GOPATH}/src/github.com/{user}/{project}:/go/src/github.com/{user}/{project}" \
+-w /go/src/github.com/{user}/{project} \
+ghcr.io/hasansino/golang:{tag} build
 ```
 
 ## Running with docker-compose
 ```go
 example:
-  image: hasansino/golang:latest
+  image: ghcr.io/hasansino/golang:{tag}
   command: build
-  working_dir: /go/src/github.com/hasansino/apptemplate
+  working_dir: /go/src/github.com/{user}/{project}
   volumes:
     - go-cache:/root/.cache/go-build
-    - ${GOPATH}/src/github.com/hasansino/apptemplate:/go/src/github.com/hasansino/apptemplate
+    - ${GOPATH}/src/github.com/{user}/{project}:/go/src/github.com/{user}/{project}
+
+volumes:
+  go-cache:
 ```
 
 ## Access running container

@@ -13,7 +13,7 @@ if [ "$1" = 'debug' ]; then
     fi
     echo >&2 "Starting project with delve debugger."
     echo >&2 "Running with args: ${@:2}"
-    exec dlv debug --listen=:40000 --headless=true --api-version=2 -- ${@:2}
+    exec dlv debug --accept-multiclient --listen=:40000 --headless=true --api-version=2 -- ${@:2}
 fi
 
 # build app using cache and then execute
