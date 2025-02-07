@@ -13,7 +13,7 @@ GitHub actions runner in cointainer. Version linux-x64-2.319.1.
 
 ```yaml
   github-runner:
-    image: hasansino/github-runner:latest
+    image: ghcr.io/hasansino/github-runner:latest
     environment:
       RUNNER_URL: "https://github.com/hasansino/dockerhub"
       RUNNER_TOKEN: "qwerty"
@@ -21,4 +21,5 @@ GitHub actions runner in cointainer. Version linux-x64-2.319.1.
       ACTIONS_STEP_DEBUG: "true"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+      - ./var/github-runner:/actions-runner/_work
 ```
