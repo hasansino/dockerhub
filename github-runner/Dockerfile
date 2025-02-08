@@ -1,10 +1,9 @@
-FROM ubuntu:20.04
+FROM ubuntu:24.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get update && apt-get install -y \
-    curl tar git jq \
-    cppcheck \
+RUN apt-get update \
+    && apt-get install -y --fix-broken curl tar git jq cppcheck \
     && apt-get clean
 
 RUN useradd -m github-runner
