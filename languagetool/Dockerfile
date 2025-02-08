@@ -8,7 +8,8 @@ RUN apt-get update \
 
 RUN git clone https://github.com/facebookresearch/fastText.git /tmp/fasttext
 WORKDIR /tmp/fasttext
-RUN make
+# to support multi-platform builds with buildx
+RUN sed -i 's/-march=native //' Makefile && make
 
 RUN wget https://dl.fbaipublicfiles.com/fasttext/supervised-models/lid.176.bin -P /tmp/fasttext
 
