@@ -2,8 +2,19 @@
 
 ## Features
 
+* UV package manager
 * Rust toolchain (for pydantic)
 
-## TODO
+## Example
 
-+ [ ] Migrate to uv
+```yaml
+services:
+  app:
+    image: ghcr.io/hasansino/python:latest
+    command: run main.py
+    working_dir: /app
+    volumes:
+      - ./:/app
+    ports:
+      - "8080:8080"
+```

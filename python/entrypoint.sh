@@ -2,11 +2,14 @@
 
 set -e
 
-pip install --no-cache-dir -r requirements.txt
-
-if [ "$1" = 'run' ]; then
-  python $2
+if [ ! -d ".venv" ]; then
+  uv venv
 fi
 
-# if arbitrary command was passed, execute it instead of default one
+if [ "$1" = 'run' ]; then
+  . .venv/bin/activate
+  uv pip install --no-cache-dir -r requirements.txt
+  python "$2"
+fi
+
 exec "$@"
