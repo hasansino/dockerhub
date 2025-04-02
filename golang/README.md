@@ -7,6 +7,7 @@ If `debug` was issued, application will be executed in debug mode
 using delve package on port 40000.
 
 ## Running from terminal
+
 ```bash
 docker run --rm -it \
 -v "${GOPATH}/src/github.com/{user}/{project}:/go/src/github.com/{user}/{project}" \
@@ -15,6 +16,7 @@ ghcr.io/hasansino/golang:{tag} build
 ```
 
 ## Running with docker-compose
+
 ```go
 example:
   image: ghcr.io/hasansino/golang:{tag}
@@ -29,6 +31,7 @@ volumes:
 ```
 
 ## Access running container
+
 ```bash
 docker exec -it {CONTAINER_ID} bash
 ```

@@ -4,12 +4,12 @@
 + Version linux-x64-2.319.1.
 + Tool included: [cppcheck](https://cppcheck.sourceforge.io/)
 
-## Environment:                       
+## Environment
 
-  * RUNNER_URL [string]
-  * RUNNER_TOKEN [string]
-  * ACTIONS_RUNNER_DEBUG [bool]
-  * ACTIONS_STEP_DEBUG [bool]
++ RUNNER_URL [string]
++ RUNNER_TOKEN [string]
++ ACTIONS_RUNNER_DEBUG [bool]
++ ACTIONS_STEP_DEBUG [bool]
 
 ## Example with docker-compose
 
