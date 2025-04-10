@@ -4,3 +4,4 @@
 + [github self-hosted runner](./github-runner/README.md)
 + [self-hosted languagetool](./languagetool/README.md)
 + [python with uv and pydantic](./python/README.md)
++ [docker sidecar firewall](./sidecar-firewall/README.md)
