@@ -1,0 +1,18 @@
+# example of iptables file format
+
+*filter
+:INPUT ACCEPT [0:0]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+# allow docker network traffic (very lax /8 mask)
+-A OUTPUT -d 172.20.0.0/8 -j ACCEPT
+# allow dns queries
+-A OUTPUT -p tcp --dport 53 -j ACCEPT
+-A OUTPUT -p udp --dport 53 -j ACCEPT
+# allow established and related connections
+-A OUTPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+# allow local loopback traffic
+-A OUTPUT -o lo -j ACCEPT
+# block everything
+-A OUTPUT -j DROP
+COMMIT
