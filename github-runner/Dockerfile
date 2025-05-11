@@ -3,7 +3,7 @@ FROM ubuntu:24.04
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update \
-    && apt-get install -y --fix-broken curl tar git jq cppcheck make \
+    && apt-get install -y --fix-broken curl tar git jq cppcheck make libicu-dev \
     && apt-get clean
 
 RUN useradd -m github-runner
