@@ -32,4 +32,6 @@ RUN chown -R github-runner:github-runner /actions-runner
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
+USER github-runner
+
 ENTRYPOINT ["/entrypoint.sh"]
