@@ -1,8 +1,8 @@
 # GitHub actions runner
 
-+ GitHub actions runner in cointainer.
-+ Version linux-x64-2.319.1.
-+ Tool included: [cppcheck](https://cppcheck.sourceforge.io/)
++ github-runner linux-x64-2.323.0
++ [cppcheck](https://cppcheck.sourceforge.io/)
++ docker-in-docker
 
 ## Environment
 
@@ -16,6 +16,7 @@
 ```yaml
   github-runner:
     image: ghcr.io/hasansino/github-runner:latest
+    privileged: true
     environment:
       RUNNER_URL: "https://github.com/hasansino/dockerhub"
       RUNNER_TOKEN: "qwerty"
