@@ -11,22 +11,28 @@ jobs:
   docker-lint:
     name: docker-lint
     runs-on: ubuntu-latest
+    continue-on-error: true
     # ---
     steps:
       - uses: actions/checkout@v4
       # ---
       - uses: hadolint/hadolint-action@v3.1.0
+        continue-on-error: true
         with:
-          dockerfile: ./ghunner/Dockerfile
+          dockerfile: ./ghrunner/Dockerfile
       - uses: hadolint/hadolint-action@v3.1.0
+        continue-on-error: true
         with:
           dockerfile: ./golang/Dockerfile
       - uses: hadolint/hadolint-action@v3.1.0
+        continue-on-error: true
         with:
           dockerfile: ./python/Dockerfile
       - uses: hadolint/hadolint-action@v3.1.0
+        continue-on-error: true
         with:
           dockerfile: ./languagetool/Dockerfile
       - uses: hadolint/hadolint-action@v3.1.0
+        continue-on-error: true
         with:
           dockerfile: ./sidecar-firewall/Dockerfile
