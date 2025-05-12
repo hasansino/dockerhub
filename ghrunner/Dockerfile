@@ -2,9 +2,8 @@ FROM ubuntu:24.04
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
-# @todo Why they are not working? This is madness.
-ARG RUNNER_ARCH
-ARG RUNNER_VERSION
+ARG RUNNER_ARCH=x64
+ARG RUNNER_VERSION=2.323.0
 
 ARG USER_ID=1001
 ARG GROUP_ID=121
@@ -31,7 +30,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* && rm -rf /tmp/*
 
 RUN mkdir /ghrunner
-RUN curl -o /tmp/runner.tar.gz -L https://github.com/actions/runner/releases/download/v2.323.0/actions-runner-linux-amd64-2.323.0.tar.gz \
+RUN curl -o /tmp/runner.tar.gz -L https://github.com/actions/runner/releases/download/v${RUNNER_VERSION}/actions-runner-linux-${RUNNER_ARCH}-${RUNNER_VERSION}.tar.gz \
     && tar -xzf /tmp/runner.tar.gz -C /ghrunner && rm /tmp/runner.tar.gz
 
 RUN ./ghrunner/bin/installdependencies.sh
