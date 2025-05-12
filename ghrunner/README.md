@@ -21,6 +21,7 @@
     environment:
       RUNNER_URL: https://github.com/hasansino/dockerhub
       RUNNER_TOKEN: AAABBBCCC
+      RUNNER_WORKDIR: /tmp/github-runner
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /tmp/github-runner:/tmp/github-runner # must much
