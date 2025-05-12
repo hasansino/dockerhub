@@ -4,11 +4,11 @@ on:
   workflow_dispatch:
     inputs:
       image_name:
-        description: 'Name'
+        description: 'name'
         required: true
         default: ''
       image_tag:
-        description: 'Tag'
+        description: 'tag'
         required: true
         default: ''
 

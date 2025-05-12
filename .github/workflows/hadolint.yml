@@ -1,0 +1,32 @@
+name: docker-lint
+
+on:
+  push:
+    branches: [ master ]
+  
+permissions:
+  contents: read
+
+jobs:
+  docker-lint:
+    name: docker-lint
+    runs-on: ubuntu-latest
+    # ---
+    steps:
+      - uses: actions/checkout@v4
+      # ---
+      - uses: hadolint/hadolint-action@v3.1.0
+        with:
+          dockerfile: ./ghunner/Dockerfile
+      - uses: hadolint/hadolint-action@v3.1.0
+        with:
+          dockerfile: ./golang/Dockerfile
+      - uses: hadolint/hadolint-action@v3.1.0
+        with:
+          dockerfile: ./python/Dockerfile
+      - uses: hadolint/hadolint-action@v3.1.0
+        with:
+          dockerfile: ./languagetool/Dockerfile
+      - uses: hadolint/hadolint-action@v3.1.0
+        with:
+          dockerfile: ./sidecar-firewall/Dockerfile
