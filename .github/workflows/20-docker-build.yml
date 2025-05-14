@@ -1,4 +1,4 @@
-name: docker build
+name: docker-build
 
 on:
   workflow_dispatch:
@@ -19,7 +19,8 @@ permissions:
   id-token: write
 
 jobs:
-  build:
+  docker-build:
+    name: docker-build
     runs-on: ubuntu-latest
     # ---
     steps:
